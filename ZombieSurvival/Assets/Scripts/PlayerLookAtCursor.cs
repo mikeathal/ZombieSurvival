@@ -7,7 +7,7 @@ public class PlayerLookAtCursor : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 LookDirection = Camera.main.ScreenToWorldPoint( Input.mousePosition);
+		Vector3 LookDirection = (Camera.main.ScreenToWorldPoint( Input.mousePosition)) - Player.position;
 		LookDirection.z = 0f;
 
 		Player.transform.up = LookDirection;
