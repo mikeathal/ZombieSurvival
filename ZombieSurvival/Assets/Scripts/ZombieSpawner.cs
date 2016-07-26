@@ -12,6 +12,6 @@ public class ZombieSpawner : MonoBehaviour {
 	}
 	
 	void Start() {
-		InvokeRepeating ("MakeZombie", 5f, 3f);
+		InvokeRepeating ("MakeZombie", 3f, 2f);
 	}
 }
