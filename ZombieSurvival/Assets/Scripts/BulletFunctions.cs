@@ -14,4 +14,14 @@ public class BulletFunctions : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+	void Update () {
+		if ( (gameObject.transform.position.x <= -2f) || (gameObject.transform.position.x >= 2f) || (gameObject.transform.position.y >= 1f)
+			|| (gameObject.transform.position.y <= -1f) ) {
+
+			Destroy (gameObject);
+	}
+
+}
+
 }

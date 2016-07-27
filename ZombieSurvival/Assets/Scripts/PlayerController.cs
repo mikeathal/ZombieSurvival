@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
+	float LastTimeFired = 0f;
+
 	public float PlayerSpeed = 5f;
 	Vector2 PlayerMoveVector = new Vector2(0f, 0f);
 	Rigidbody2D PlayerRigidBody;
 
 	public Rigidbody2D Bullet;
-	public float BulletSpeed = 10f;
+	public float BulletSpeed = 5f;
 
 	void Start () {
 		PlayerRigidBody = GetComponent<Rigidbody2D>();
@@ -18,7 +20,8 @@ public class PlayerController : MonoBehaviour {
 
 	void FireBullets() {
 		Rigidbody2D BulletClone = (Rigidbody2D)Instantiate (Bullet, transform.position, transform.rotation);
-		BulletClone.velocity = transform.forward * BulletSpeed;
+		BulletClone.velocity = transform.up * BulletSpeed;
+
 	}
 
 	// Update is called once per frame
@@ -41,8 +44,9 @@ public class PlayerController : MonoBehaviour {
 
 
 		// Click to fire bullets
-		if (Input.GetMouseButton (0)) {
+		if (Input.GetMouseButton (0) && Time.time - LastTimeFired > 0.25f ) {
 			FireBullets ();
+			LastTimeFired = Time.time;
 		}
 
 	}
